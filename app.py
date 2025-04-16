@@ -54,7 +54,7 @@ def handle_file_upload(uploaded_file):
         text = extract_text_from_pdf(uploaded_file)
     elif file_extension == 'docx':
         text = extract_text_from_docx(uploaded_file)
-    elif file_extension == 'text':
+    elif file_extension == 'txt':
         text = extract_text_from_txt
     else:
         raise ValueError("Unsupported file type. Please upload the a PDF, DOCX, or TXT file.")
