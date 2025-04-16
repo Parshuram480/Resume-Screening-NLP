@@ -55,12 +55,14 @@ def handle_file_upload(uploaded_file):
     elif file_extension == 'docx':
         text = extract_text_from_docx(uploaded_file)
     elif file_extension == 'txt':
-        text = extract_text_from_txt
+        text = extract_text_from_txt(uploaded_file)
     else:
         raise ValueError("Unsupported file type. Please upload the a PDF, DOCX, or TXT file.")
     return text
 
 # Predict the category of a resume
+
+
 def pred(input_resume):
 
     cleaned_text = cleanResume(input_resume)
@@ -87,7 +89,7 @@ def main():
     uploaded_file = st.file_uploader("Upload a Resume", type=["pdf", "docx", "txt"])
 
     if uploaded_file is not None:
-        
+
         try:
             resume_text = handle_file_upload(uploaded_file)
             st.write("Successfully extracted the text from the uploaded resume.")
